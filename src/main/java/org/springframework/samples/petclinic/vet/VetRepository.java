@@ -46,10 +46,11 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	Collection<Vet> findAll() throws DataAccessException;
 
 	/**
-	 * Retrieve all <code>Vet</code>s from data store in Pages
-	 * @param pageable
-	 * @return
-	 * @throws DataAccessException
+	 * Retrieve a paginated list of all <code>Vet</code>s from the data store.
+	 * @param pageable the pagination and sorting information (page number, page size, sort
+	 * order)
+	 * @return a {@link Page} of {@link Vet} objects for the requested page
+	 * @throws DataAccessException if there is any problem reading from the data store
 	 */
 	@Transactional(readOnly = true)
 	@Cacheable("vets")

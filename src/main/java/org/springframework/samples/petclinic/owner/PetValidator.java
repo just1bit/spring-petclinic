@@ -33,6 +33,12 @@ public class PetValidator implements Validator {
 
 	private static final String REQUIRED = "required";
 
+	/**
+	 * Validates a {@link Pet} instance, checking that name, type (for new pets only),
+	 * and birth date are all provided.
+	 * @param obj the object to validate; expected to be a {@link Pet} instance
+	 * @param errors the {@link Errors} object used to register any validation failures
+	 */
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Pet pet = (Pet) obj;

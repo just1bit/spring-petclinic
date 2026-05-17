@@ -42,12 +42,26 @@ public class PetTypeFormatter implements Formatter<PetType> {
 		this.types = types;
 	}
 
+	/**
+	 * Converts a {@link PetType} to its string representation.
+	 * @param petType the pet type to convert, must not be {@literal null}
+	 * @param locale the current locale (not used; pet type names are locale-independent)
+	 * @return the name of the pet type, or {@code "<null>"} if the name is not set
+	 */
 	@Override
 	public String print(PetType petType, Locale locale) {
 		String name = petType.getName();
 		return name != null ? name : "<null>";
 	}
 
+	/**
+	 * Parses a pet type name string into a {@link PetType} object by looking up all
+	 * known pet types in the data store.
+	 * @param text the pet type name to look up
+	 * @param locale the current locale (not used; matching is case-sensitive)
+	 * @return the {@link PetType} whose name matches {@code text}
+	 * @throws ParseException if no pet type with the given name is found
+	 */
 	@Override
 	public PetType parse(String text, Locale locale) throws ParseException {
 		Collection<PetType> findPetTypes = this.types.findPetTypes();
